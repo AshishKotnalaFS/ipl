@@ -15,14 +15,14 @@ function teamNames(data1) {
   }
   return unique;
 }
+
 function runConcededByTeamIn2016(data1, data2) {
   let result = {};
+
   let idArray = matchIdWhichHeldOn2016(data2); //this whill array contain ids of all matches that held in2016 in increasing order
+
   let requiredMatch = data1.filter((item) => {
-    if (
-      item.match_id >= idArray[0] &&
-      item.match_id <= idArray[idArray.length - 1]
-    ) {
+    if (idArray.includes(item.match_id)) {
       return true;
     }
   });
@@ -45,10 +45,11 @@ function runConcededByTeamIn2016(data1, data2) {
       }
     }
     if (sum > 0) {
+      console.log(sum, "sum");
       result[teams[i]] = sum;
     }
   }
-
+  console.log(result);
   return result;
 }
 module.exports = runConcededByTeamIn2016;
