@@ -10,6 +10,7 @@ function visualizeData(data) {
   visualizeMatchesPlayedPerYear(data.matchesPlayedPerYear);
   visualizeMatchWonByTeamOverAllYear(data.matchWonByTeamOverAllYear);
   visualizeRunConcededByTeamIn2016(data.runConcededByTeamIn2016);
+  visualizeTenBestEcnomicBowler(data.tenBestEcnomicBowler);
   return;
 }
 
@@ -178,6 +179,65 @@ function visualizeRunConcededByTeamIn2016(runConcededByTeamIn2016) {
           color: "#FFFFFF",
           align: "center",
           format: "{point.y:.0f}", // one decimal
+          y: 25, // 10 pixels down from the top
+          style: {
+            fontSize: "13px",
+            fontFamily: "Verdana, sans-serif",
+          },
+        },
+      },
+    ],
+  });
+}
+
+function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
+  const seriesData = [];
+  for (let bowler in tenBestEcnomicBowler) {
+    seriesData.push([bowler, tenBestEcnomicBowler[bowler]]);
+  }
+  Highcharts.chart("ten-best-ecnomic-bowler", {
+    chart: {
+      type: "column",
+    },
+    title: {
+      text: "4. Top Best Economical Bowler in 2015 Season",
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>',
+    },
+    xAxis: {
+      type: "category",
+      labels: {
+        rotation: -45,
+        style: {
+          fontSize: "13px",
+          fontFamily: "Verdana, sans-serif",
+        },
+      },
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Matches",
+      },
+    },
+    legend: {
+      enabled: false,
+    },
+    tooltip: {
+      pointFormat: "Economy <b>{point.y:.2f}</b>",
+    },
+    series: [
+      {
+        name: "Years",
+        data: seriesData,
+        dataLabels: {
+          enabled: true,
+          rotation: 0,
+          color: "#FFFFFF",
+          align: "center",
+          format: "{point.y:.2f}", // one decimal
           y: 25, // 10 pixels down from the top
           style: {
             fontSize: "13px",

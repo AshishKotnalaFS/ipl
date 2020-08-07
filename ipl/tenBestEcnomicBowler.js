@@ -21,34 +21,50 @@ function tenBestEcnomicBowler(data1, data2) {
   let idArray = matchIdWhichHeldOn2015(data2); //this whill array contain ids of all matches that held in2016 in increasing order
 
   let requiredMatch = data1.filter((item) => {
-    if (
-      item.match_id >= idArray[0] &&
-      item.match_id <= idArray[idArray.length - 1]
-    ) {
+    if (idArray.includes(item.match_id)) {
       return true;
     }
   });
 
   let trackEconomy = [];
   let bowlers = BowlerNames(requiredMatch);
-  // console.log(bowlers, "bowlers");
+
   for (let i = 0; i < bowlers.length; i++) {
     let sumRuns = 0;
-    let sunBalls = 0;
+    let sumBalls = 0;
     // let economyRate = 0;
-
     for (let j = 0; j < requiredMatch.length; j++) {
-      const { total_runs, ball, bowler } = requiredMatch[j];
+      const {
+        total_runs,
+        ball,
+        is_super_over,
+        bowler,
+        bye_runs,
+        legbye_runs,
+        noball_runs,
+        penalty_runs,
+        wide_runs,
+        extra_runs,
+        bowling_team,
+      } = requiredMatch[j];
       if (bowlers[i] === bowler) {
-        sumRuns += +total_runs;
-        sunBalls += +ball;
+        sumRuns += +total_runs - (+legbye_runs + +bye_runs + +penalty_runs);
+        if (requiredMatch[j].ball <= 6) {
+          sumBalls++;
+        }
       }
     }
-    let overs = sunBalls / 6;
-    trackEconomy.push(sumRuns / overs);
-    result[bowlers[i]] = sumRuns / overs;
+    let overs = sumBalls / 6;
+    let economy = sumRuns / overs;
+    trackEconomy.push([bowlers[i], economy]);
   }
-  // console.log(result);
+  trackEconomy.sort((a, b) => {
+    return a[1] - b[1];
+  });
+  trackEconomy = trackEconomy.slice(0, 10);
+  for (let j = 0; j < trackEconomy.length; j++) {
+    result[trackEconomy[j][0]] = trackEconomy[j][1];
+  }
   return result;
 }
 module.exports = tenBestEcnomicBowler;

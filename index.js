@@ -24,11 +24,11 @@ function main() {
           result3 = runConcededByTeamIn2016(deliveries, matches);
           result4 = tenBestEcnomicBowler(deliveries, matches);
 
-          saveMatches(result1, result2, result3);
+          saveMatches(result1, result2, result3, result4);
         });
     });
 }
-function saveMatches(result1, result2, result3) {
+function saveMatches(result1, result2, result3, result4) {
   const jsonData = {
     matchesPlayedPerYear: result1,
     matchWonByTeamOverAllYear: result2,
