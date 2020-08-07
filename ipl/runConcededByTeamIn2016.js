@@ -18,16 +18,13 @@ function teamNames(data1) {
 
 function runConcededByTeamIn2016(data1, data2) {
   let result = {};
-
   let idArray = matchIdWhichHeldOn2016(data2); //this whill array contain ids of all matches that held in2016 in increasing order
-
   let requiredMatch = data1.filter((item) => {
     if (idArray.includes(item.match_id)) {
       return true;
     }
   });
   let teams = teamNames(data2);
-
   for (let i = 0; i < teams.length; i++) {
     let sum = 0;
     for (let j = 0; j < requiredMatch.length; j++) {
@@ -45,11 +42,9 @@ function runConcededByTeamIn2016(data1, data2) {
       }
     }
     if (sum > 0) {
-      console.log(sum, "sum");
       result[teams[i]] = sum;
     }
   }
-  console.log(result);
   return result;
 }
 module.exports = runConcededByTeamIn2016;
