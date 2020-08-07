@@ -5,13 +5,11 @@ function teamNames(data1) {
   }
   return unique;
 }
-
 function uniqueSeasons(data1) {
   let unique = [];
   for (let i = 0; i < data1.length; i++) {
     unique = [...new Set(data1.map((item) => item.season))];
   }
-
   return unique;
 }
 
@@ -29,5 +27,4 @@ function matchWonByTeamOverAllYear(data1) {
   }
   return numberOfMatchWonByEachTeamAllTm;
 }
-
 module.exports = matchWonByTeamOverAllYear;

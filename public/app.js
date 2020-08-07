@@ -5,10 +5,11 @@ function fetchAndVisualizeData() {
 }
 
 fetchAndVisualizeData();
-
+//this is basically calling all the function of all graphs
 function visualizeData(data) {
   visualizeMatchesPlayedPerYear(data.matchesPlayedPerYear);
   visualizeMatchWonByTeamOverAllYear(data.matchWonByTeamOverAllYear);
+  visualizeRunConcededByTeamIn2016(data.runConcededByTeamIn2016);
   return;
 }
 
@@ -56,11 +57,11 @@ function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {
         data: seriesData,
         dataLabels: {
           enabled: true,
-          rotation: -90,
+          rotation: 0,
           color: "#FFFFFF",
-          align: "right",
-          format: "{point.y:.1f}", // one decimal
-          y: 10, // 10 pixels down from the top
+          align: "center",
+          format: "{point.y:.0f}", // one decimal
+          y: 25, // 10 pixels down from the top
           style: {
             fontSize: "13px",
             fontFamily: "Verdana, sans-serif",
@@ -72,12 +73,11 @@ function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {
 }
 
 function visualizeMatchWonByTeamOverAllYear(matchWonByTeamOverAllYear) {
-  console.log(matchWonByTeamOverAllYear, "matchWonByTeamOverAllYear");
   const seriesData = [];
   for (let key in matchWonByTeamOverAllYear) {
     seriesData.push({ name: key, data: matchWonByTeamOverAllYear[key] });
   }
-  console.log(seriesData, "eriesData");
+
   Highcharts.chart("match-won-by-team-over-all-year", {
     chart: {
       type: "column",
@@ -86,25 +86,22 @@ function visualizeMatchWonByTeamOverAllYear(matchWonByTeamOverAllYear) {
       text: "2. Number Of Matches Won By Each Team Over all Years Of IPL",
     },
     subtitle: {
-      text: "Source: Ipl.com",
+      text: "Source: ",
     },
     xAxis: {
       categories: [
-        "Sunrisers Hyderabad",
-        "Mumbai Indians",
-        "Gujarat Lions",
-        "Rising Pune Supergiant",
-        "Royal Challengers Bangalore",
-        "Kolkata Knight Riders",
-        "Delhi Daredevils",
-        "Kings XI Punjab",
-        "Chennai Super Kings",
-        "Rajasthan Royals",
-        "Deccan Chargers",
-        "Kochi Tuskers Kerala",
-        "Pune Warriors",
-        "Rising Pune Supergiants",
-        "Delhi Capitals",
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
       ],
       crosshair: true,
     },
@@ -130,5 +127,64 @@ function visualizeMatchWonByTeamOverAllYear(matchWonByTeamOverAllYear) {
       },
     },
     series: seriesData,
+  });
+}
+
+function visualizeRunConcededByTeamIn2016(runConcededByTeamIn2016) {
+  const seriesData = [];
+  for (let team in runConcededByTeamIn2016) {
+    seriesData.push([team, runConcededByTeamIn2016[team]]);
+  }
+  Highcharts.chart("run-conceded-by-team-in-2016", {
+    chart: {
+      type: "column",
+    },
+    title: {
+      text: "3. Run Conceded By Each Team In 2016",
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>',
+    },
+    xAxis: {
+      type: "category",
+      labels: {
+        rotation: -45,
+        style: {
+          fontSize: "13px",
+          fontFamily: "Verdana, sans-serif",
+        },
+      },
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Matches",
+      },
+    },
+    legend: {
+      enabled: false,
+    },
+    tooltip: {
+      pointFormat: "Extra runs <b>{point.y:.1f}</b>",
+    },
+    series: [
+      {
+        name: "Years",
+        data: seriesData,
+        dataLabels: {
+          enabled: true,
+          rotation: 0,
+          color: "#FFFFFF",
+          align: "center",
+          format: "{point.y:.0f}", // one decimal
+          y: 25, // 10 pixels down from the top
+          style: {
+            fontSize: "13px",
+            fontFamily: "Verdana, sans-serif",
+          },
+        },
+      },
+    ],
   });
 }
