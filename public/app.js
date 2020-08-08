@@ -263,7 +263,7 @@ function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
       type: "bar",
     },
     title: {
-      text: "Stacked bar chart",
+      text: "5. Stroy : Match Won By Each Team Per Venue",
     },
     xAxis: {
       categories: [
@@ -313,7 +313,7 @@ function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
     yAxis: {
       min: 0,
       title: {
-        text: "Total fruit consumption",
+        text: "",
       },
     },
     legend: {
