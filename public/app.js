@@ -214,7 +214,7 @@ function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
     yAxis: {
       min: 0,
       title: {
-        text: "Matches",
+        text: "Economy",
       },
     },
     legend: {
