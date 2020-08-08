@@ -12,7 +12,6 @@ function venueNames(data1) {
   }
   return unique;
 }
-
 function matchWonByEachTeamPerVenue(matches) {
   let teamName = Array.from(new Set(teamNames(matches)));
   let venueName = Array.from(new Set(venueNames(matches)));
@@ -31,5 +30,4 @@ function matchWonByEachTeamPerVenue(matches) {
   }
   return result;
 }
-
 module.exports = matchWonByEachTeamPerVenue;

@@ -7,7 +7,6 @@ function matchIdWhichHeldOn2016(data1) {
   }
   return idOf2016Matches;
 }
-
 function teamNames(data1) {
   let unique = [];
   for (let i = 0; i < data1.length; i++) {
@@ -15,7 +14,6 @@ function teamNames(data1) {
   }
   return unique;
 }
-
 function runConcededByTeamIn2016(data1, data2) {
   let result = {};
   let idArray = matchIdWhichHeldOn2016(data2); //this whill array contain ids of all matches that held in2016 in increasing order

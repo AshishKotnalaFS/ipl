@@ -12,7 +12,6 @@ function uniqueSeasons(data1) {
   }
   return unique;
 }
-
 function matchWonByTeamOverAllYear(data1) {
   let teams = teamNames(data1);
   let numberOfMatchWonByEachTeamAllTm = {};

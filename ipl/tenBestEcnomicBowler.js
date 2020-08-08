@@ -28,7 +28,6 @@ function tenBestEcnomicBowler(data1, data2) {
 
   let trackEconomy = [];
   let bowlers = BowlerNames(requiredMatch);
-
   for (let i = 0; i < bowlers.length; i++) {
     let sumRuns = 0;
     let sumBalls = 0;

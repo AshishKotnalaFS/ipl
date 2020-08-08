@@ -257,7 +257,6 @@ function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
   for (let key in matchWonByEachTeamPerVenue) {
     seriesData.push({ name: key, data: matchWonByEachTeamPerVenue[key] });
   }
-  console.log(seriesData, "series");
   Highcharts.chart("match-won-by-each-team-per-venue", {
     chart: {
       type: "bar",
