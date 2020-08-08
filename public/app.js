@@ -3,10 +3,8 @@ function fetchAndVisualizeData() {
     .then((r) => r.json())
     .then(visualizeData);
 }
-
 fetchAndVisualizeData();
 //this is basically calling all the function of all graphs
-
 function visualizeData(data) {
   visualizeMatchesPlayedPerYear(data.matchesPlayedPerYear);
   visualizeMatchWonByTeamOverAllYear(data.matchWonByTeamOverAllYear);
@@ -15,7 +13,6 @@ function visualizeData(data) {
   visualizeMatchWonByEachTeamPerVenue(data.matchWonByEachTeamPerVenue);
   return;
 }
-
 function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {
   const seriesData = [];
   for (let year in matchesPlayedPerYear) {
@@ -74,13 +71,11 @@ function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {
     ],
   });
 }
-
 function visualizeMatchWonByTeamOverAllYear(matchWonByTeamOverAllYear) {
   const seriesData = [];
   for (let key in matchWonByTeamOverAllYear) {
     seriesData.push({ name: key, data: matchWonByTeamOverAllYear[key] });
   }
-
   Highcharts.chart("match-won-by-team-over-all-year", {
     chart: {
       type: "column",
@@ -132,7 +127,6 @@ function visualizeMatchWonByTeamOverAllYear(matchWonByTeamOverAllYear) {
     series: seriesData,
   });
 }
-
 function visualizeRunConcededByTeamIn2016(runConcededByTeamIn2016) {
   const seriesData = [];
   for (let team in runConcededByTeamIn2016) {
@@ -191,13 +185,11 @@ function visualizeRunConcededByTeamIn2016(runConcededByTeamIn2016) {
     ],
   });
 }
-
 function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
   const seriesData = [];
   for (let bowler in tenBestEcnomicBowler) {
     seriesData.push([bowler, tenBestEcnomicBowler[bowler]]);
   }
-
   Highcharts.chart("ten-best-ecnomic-bowler", {
     chart: {
       type: "column",
@@ -251,7 +243,6 @@ function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
     ],
   });
 }
-
 function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
   const seriesData = [];
   for (let key in matchWonByEachTeamPerVenue) {

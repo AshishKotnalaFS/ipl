@@ -10,5 +10,4 @@ function matchesPlayedPerYear(matches) {
   }
   return result;
 }
-
 module.exports = matchesPlayedPerYear;
