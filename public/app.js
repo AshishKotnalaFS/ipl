@@ -6,11 +6,13 @@ function fetchAndVisualizeData() {
 
 fetchAndVisualizeData();
 //this is basically calling all the function of all graphs
+
 function visualizeData(data) {
   visualizeMatchesPlayedPerYear(data.matchesPlayedPerYear);
   visualizeMatchWonByTeamOverAllYear(data.matchWonByTeamOverAllYear);
   visualizeRunConcededByTeamIn2016(data.runConcededByTeamIn2016);
   visualizeTenBestEcnomicBowler(data.tenBestEcnomicBowler);
+  visualizeMatchWonByEachTeamPerVenue(data.matchWonByEachTeamPerVenue);
   return;
 }
 
@@ -195,6 +197,7 @@ function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
   for (let bowler in tenBestEcnomicBowler) {
     seriesData.push([bowler, tenBestEcnomicBowler[bowler]]);
   }
+
   Highcharts.chart("ten-best-ecnomic-bowler", {
     chart: {
       type: "column",
@@ -246,5 +249,81 @@ function visualizeTenBestEcnomicBowler(tenBestEcnomicBowler) {
         },
       },
     ],
+  });
+}
+
+function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
+  const seriesData = [];
+  for (let key in matchWonByEachTeamPerVenue) {
+    seriesData.push({ name: key, data: matchWonByEachTeamPerVenue[key] });
+  }
+  console.log(seriesData, "series");
+  Highcharts.chart("match-won-by-each-team-per-venue", {
+    chart: {
+      type: "bar",
+    },
+    title: {
+      text: "Stacked bar chart",
+    },
+    xAxis: {
+      categories: [
+        "Rajiv Gandhi International Stadium, Uppal",
+        "Maharashtra Cricket Association Stadium",
+        "Saurashtra Cricket Association Stadium",
+        "Holkar Cricket Stadium",
+        "M Chinnaswamy Stadium",
+        "Wankhede Stadium",
+        "Eden Gardens",
+        "Feroz Shah Kotla",
+        "Punjab Cricket Association IS Bindra Stadium, Mohali",
+        "Green Park",
+        "Punjab Cricket Association Stadium, Mohali",
+        "Sawai Mansingh Stadium",
+        "MA Chidambaram Stadium, Chepauk",
+        "Dr DY Patil Sports Academy",
+        "Newlands",
+        "St George's Park",
+        "Kingsmead",
+        "SuperSport Park",
+        "Buffalo Park",
+        "New Wanderers Stadium",
+        "De Beers Diamond Oval",
+        "OUTsurance Oval",
+        "Brabourne Stadium",
+        "Sardar Patel Stadium, Motera",
+        "Barabati Stadium",
+        "Vidarbha Cricket Association Stadium, Jamtha",
+        "Himachal Pradesh Cricket Association Stadium",
+        "Nehru Stadium",
+        "Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium",
+        "Subrata Roy Sahara Stadium",
+        "Shaheed Veer Narayan Singh International Stadium",
+        "JSCA International Stadium Complex",
+        "Sheikh Zayed Stadium",
+        "Sharjah Cricket Stadium",
+        "Dubai International Cricket Stadium",
+        "M. A. Chidambaram Stadium",
+        "Feroz Shah Kotla Ground",
+        "M. Chinnaswamy Stadium",
+        "Rajiv Gandhi Intl. Cricket Stadium",
+        "IS Bindra Stadium",
+        "ACA-VDCA Stadium",
+      ],
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Total fruit consumption",
+      },
+    },
+    legend: {
+      reversed: true,
+    },
+    plotOptions: {
+      series: {
+        stacking: "normal",
+      },
+    },
+    series: seriesData,
   });
 }
