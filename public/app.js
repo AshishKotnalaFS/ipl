@@ -156,7 +156,7 @@ function visualizeRunConcededByTeamIn2016(runConcededByTeamIn2016) {
     yAxis: {
       min: 0,
       title: {
-        text: "Matches",
+        text: "Extra Runs",
       },
     },
     legend: {
