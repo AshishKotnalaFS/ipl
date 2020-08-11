@@ -11,6 +11,7 @@ function visualizeData(data) {
   visualizeRunConcededByTeamIn2016(data.runConcededByTeamIn2016);
   visualizeTenBestEcnomicBowler(data.tenBestEcnomicBowler);
   visualizeMatchWonByEachTeamPerVenue(data.matchWonByEachTeamPerVenue);
+
   return;
 }
 function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {

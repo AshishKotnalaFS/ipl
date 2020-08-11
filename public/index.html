@@ -12,10 +12,32 @@
     <title>
       IPL visualization
     </title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
   </head>
-
   <body>
     <h1>IPL Dataset visualization</h1>
+    <div class="input-container" style="margin: 3.3rem;">
+      <span class="label">Enter year: </span>
+      <input
+        type="number"
+        id="selectedYear"
+        min="2008"
+        max="2019"
+        class="year-input"
+      />
+      <button onclick="changeYear()" class="year-input-button">Submit</button>
+      <!-- <span class="error invisible">Error: Enter year from 2008 to 2019</span> -->
+    </div>
+    <div
+      id="run-conceded-by-team-in-selectedYear"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
     <div
       id="matches-played-per-year"
       style="
@@ -26,7 +48,6 @@
         padding: 2rem;
       "
     ></div>
-
     <div
       id="match-won-by-team-over-all-year"
       style="
@@ -37,7 +58,6 @@
         padding: 2rem;
       "
     ></div>
-
     <div
       id="run-conceded-by-team-in-2016"
       style="
@@ -68,8 +88,76 @@
         padding: 2rem;
       "
     ></div>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-
+    <script>
+      function changeYear() {
+        let id = document.getElementById("selectedYear").value;
+        id = parseInt(id);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            let data = JSON.parse(xhttp.responseText);
+            const seriesData = [];
+            for (let team in data) {
+              seriesData.push([team, data[team]]);
+            }
+            Highcharts.chart("run-conceded-by-team-in-selectedYear", {
+              chart: {
+                type: "column",
+              },
+              title: {
+                text: `3. Run Conceded By Each Team In ${id}`,
+              },
+              subtitle: {
+                text:
+                  'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>',
+              },
+              xAxis: {
+                type: "category",
+                labels: {
+                  rotation: -45,
+                  style: {
+                    fontSize: "13px",
+                    fontFamily: "Verdana, sans-serif",
+                  },
+                },
+              },
+              yAxis: {
+                min: 0,
+                title: {
+                  text: "Extra Runs",
+                },
+              },
+              legend: {
+                enabled: false,
+              },
+              tooltip: {
+                pointFormat: "Extra runs <b>{point.y:.1f}</b>",
+              },
+              series: [
+                {
+                  name: "Years",
+                  data: seriesData,
+                  dataLabels: {
+                    enabled: true,
+                    rotation: 0,
+                    color: "#FFFFFF",
+                    align: "center",
+                    format: "{point.y:.0f}", // one decimal
+                    y: 25, // 10 pixels down from the top
+                    style: {
+                      fontSize: "13px",
+                      fontFamily: "Verdana, sans-serif",
+                    },
+                  },
+                },
+              ],
+            });
+          }
+        };
+        xhttp.open("GET", `http://localhost:8080/api/${id}/`, true);
+        xhttp.send();
+      }
+    </script>
     <script src="./app.js"></script>
   </body>
 </html>
