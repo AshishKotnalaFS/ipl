@@ -154,7 +154,7 @@
             });
           }
         };
-        xhttp.open("GET", `/api/${id}/`, true);
+        xhttp.open("GET", `${process.env.PORT}/api/${id}/`, true);
         xhttp.send();
       }
     </script>
