@@ -89,8 +89,6 @@
       "
     ></div>
     <script>
-      console.log(process.env.PORT);
-      let port = process.env.PORT;
       function changeYear() {
         id = document.getElementById("selectedYear").value;
         id = parseInt(id);
@@ -156,7 +154,7 @@
             });
           }
         };
-        xhttp.open("GET", `https://${port}/api/${id}/`, true);
+        xhttp.open("GET", `/api/${id}/`, true);
         xhttp.send();
       }
     </script>
