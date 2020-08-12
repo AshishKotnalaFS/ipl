@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "ipl": "node index.js",
+    "start": "http-server"
   },
   "keywords": [],
   "author": "",
