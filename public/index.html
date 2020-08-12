@@ -20,6 +20,7 @@
       <span class="label">Enter year: </span>
       <input
         type="number"
+        value="2008"
         id="selectedYear"
         min="2008"
         max="2019"
@@ -92,9 +93,12 @@
       const yearButton = document.getElementById("year");
       yearButton.addEventListener("click", (e) => {
         let id = document.getElementById("selectedYear").value;
+        if (!id) {
+          id = "2008";
+        }
         id = parseInt(id);
         fetch(`http://localhost:8080/api/${id}`)
-          // .then((res) => res.json())
+          .then((res) => res.json())
           .then((data) => {
             let seriesData = [];
             for (let team in data) {
