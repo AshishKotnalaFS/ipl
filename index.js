@@ -13,7 +13,6 @@ const JSON_OUTPUT_FILE_PATH_TWO = "./public/data2.json";
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.json());
@@ -28,7 +27,7 @@ app.get("/api/:id", (req, res) => {
     res.send(requireddata);
   });
 });
-
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`listening on port ${port}...`));
 function main() {
   let result1;
