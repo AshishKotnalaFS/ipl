@@ -93,10 +93,9 @@
       yearButton.addEventListener("click", (e) => {
         let id = document.getElementById("selectedYear").value;
         id = parseInt(id);
-        fetch(`/api/${id}`)
-          .then((res) => res.json())
+        fetch(`http://localhost:8080/api/${id}`)
+          // .then((res) => res.json())
           .then((data) => {
-            // console.log(data, "DATA");
             let seriesData = [];
             for (let team in data) {
               seriesData.push([team, +data[team]]);
