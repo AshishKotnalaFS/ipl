@@ -90,7 +90,7 @@
     ></div>
     <script>
       function changeYear() {
-        let id = document.getElementById("selectedYear").value;
+        id = document.getElementById("selectedYear").value;
         id = parseInt(id);
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -154,7 +154,7 @@
             });
           }
         };
-        xhttp.open("GET", `http://localhost:8080/api/${id}/`, true);
+        xhttp.open("GET", `http://localhost:5000/api/${id}/`, true);
         xhttp.send();
       }
     </script>

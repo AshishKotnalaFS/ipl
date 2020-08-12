@@ -27,7 +27,7 @@ app.get("/api/:id", (req, res) => {
     res.send(requireddata);
   });
 });
-const port = process.env.Port || 8080;
+const port = process.env.Port || 5000;
 app.listen(port, () => console.log(`listening on port ${port}...`));
 function main() {
   let result1;
