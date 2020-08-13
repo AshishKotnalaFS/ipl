@@ -101,6 +101,8 @@
         fetch(`/api/${id}`)
           .then((res) => res.json())
           .then((data) => {
+            console.log(data, "DADA");
+            let seriesData = [];
             for (let team in data) {
               seriesData.push([team, +data[team]]);
             }
