@@ -54,5 +54,4 @@ function runConcededByTeamInSpecificYear(data1, data2) {
   }
   return finalResult;
 }
-
 module.exports = runConcededByTeamInSpecificYear;

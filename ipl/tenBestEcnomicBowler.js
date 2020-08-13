@@ -7,7 +7,6 @@ function matchIdWhichHeldOn2015(data1) {
   }
   return idOf2015Matches;
 }
-
 function BowlerNames(data1) {
   let unique = [];
   for (let i = 0; i < data1.length; i++) {
@@ -15,7 +14,6 @@ function BowlerNames(data1) {
   }
   return unique;
 }
-
 function tenBestEcnomicBowler(data1, data2) {
   let result = {};
   let idArray = matchIdWhichHeldOn2015(data2); //this whill array contain ids of all matches that held in2016 in increasing order

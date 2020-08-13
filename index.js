@@ -18,16 +18,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const path = require("path");
-
 const publicDirectoryPath = path.join(__dirname, "./public");
 app.use(express.static(publicDirectoryPath));
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", { root: __dirname });
 });
-
 app.get("/api/:id", (req, res) => {
   let requireddata;
-
   let id = req.params.id;
   console.log(id, "IDIDIDIDID");
   fs.readFile("./public/data2.json", (err, data) => {
@@ -38,7 +35,6 @@ app.get("/api/:id", (req, res) => {
     res.send(requireddata);
   });
 });
-
 app.listen(port, () => console.log(`listening on port ${port}...`));
 function main() {
   let result1;
