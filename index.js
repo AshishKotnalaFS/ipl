@@ -18,10 +18,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.sendFile("./public/index.html", { root: __dirname });
+});
 app.get("/api/:id", (req, res) => {
   let requireddata;
   let id = req.params.id;
-  fs.readFile("./public/data2.json", (err, data) => {
+  fs.readFile("public", (err, data) => {
     if (err) throw err;
     const users = JSON.parse(data);
     requireddata = users.runConcededByTeamInSpecificYear[id];
