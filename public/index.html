@@ -99,7 +99,13 @@
           id = "2008";
         }
         id = parseInt(id);
-        fetch(`/api/${id}`)
+        fetch(`/api/${id}`, {
+          method: "get",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             let seriesData = [];
