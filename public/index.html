@@ -100,8 +100,8 @@
 
         fetch(`/api/${id}`)
           .then((res) => {
+            console.log(res, "DATADATDATDATDATD");
             res.json();
-            console.log(res.json, "DATADATDATDATDATD");
           })
           .then((data) => {
             let seriesData = [];
