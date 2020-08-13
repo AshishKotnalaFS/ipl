@@ -319,67 +319,71 @@ function visualizeMatchWonByEachTeamPerVenue(matchWonByEachTeamPerVenue) {
   });
 }
 
-// const yearButton = document.getElementById("year");
-// yearButton.addEventListener("click", (e) => {
-//   let id = document.getElementById("selectedYear").value;
-//   id = parseInt(id);
-//   fetch(`http://localhost:8080/api/${id}`).then((data) => {
-//     let seriesData = [];
-//     console.log(data, "DATA");
-//     for (let team in data) {
-//       seriesData.push([team, data[team]]);
-//     }
-//     Highcharts.chart("run-conceded-by-team-in-selectedYear", {
-//       chart: {
-//         type: "column",
-//       },
-//       title: {
-//         text: `3. Run Conceded By Each Team In ${id}`,
-//       },
-//       subtitle: {
-//         text:
-//           'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>',
-//       },
-//       xAxis: {
-//         type: "category",
-//         labels: {
-//           rotation: -45,
-//           style: {
-//             fontSize: "13px",
-//             fontFamily: "Verdana, sans-serif",
-//           },
-//         },
-//       },
-//       yAxis: {
-//         min: 0,
-//         title: {
-//           text: "Extra Runs",
-//         },
-//       },
-//       legend: {
-//         enabled: false,
-//       },
-//       tooltip: {
-//         pointFormat: "Extra runs <b>{point.y:.1f}</b>",
-//       },
-//       series: [
-//         {
-//           name: "Years",
-//           data: seriesData,
-//           dataLabels: {
-//             enabled: true,
-//             rotation: 0,
-//             color: "#FFFFFF",
-//             align: "center",
-//             format: "{point.y:.0f}", // one decimal
-//             y: 25, // 10 pixels down from the top
-//             style: {
-//               fontSize: "13px",
-//               fontFamily: "Verdana, sans-serif",
-//             },
-//           },
-//         },
-//       ],
-//     });
-//   });
-// });
+const yearButton = document.getElementById("year");
+yearButton.addEventListener("click", (e) => {
+  let id = document.getElementById("selectedYear").value;
+  if (!id) {
+    id = "2008";
+  }
+  id = parseInt(id);
+  fetch(`http://localhost:5000/api/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      let seriesData = [];
+      for (let team in data) {
+        seriesData.push([team, +data[team]]);
+      }
+      Highcharts.chart("run-conceded-by-team-in-selectedYear", {
+        chart: {
+          type: "column",
+        },
+        title: {
+          text: `3. Run Conceded By Each Team In ${id}`,
+        },
+        subtitle: {
+          text:
+            'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>',
+        },
+        xAxis: {
+          type: "category",
+          labels: {
+            rotation: -45,
+            style: {
+              fontSize: "13px",
+              fontFamily: "Verdana, sans-serif",
+            },
+          },
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Extra Runs",
+          },
+        },
+        legend: {
+          enabled: false,
+        },
+        tooltip: {
+          pointFormat: "Extra runs <b>{point.y:.1f}</b>",
+        },
+        series: [
+          {
+            name: "Years",
+            data: seriesData,
+            dataLabels: {
+              enabled: true,
+              rotation: 0,
+              color: "#FFFFFF",
+              align: "center",
+              format: "{point.y:.0f}", // one decimal
+              y: 25, // 10 pixels down from the top
+              style: {
+                fontSize: "13px",
+                fontFamily: "Verdana, sans-serif",
+              },
+            },
+          },
+        ],
+      });
+    });
+});
