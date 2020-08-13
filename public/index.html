@@ -12,6 +12,84 @@
     <title>
       IPL visualization
     </title>
+  </head>
+  <body>
+    <h1>IPL Dataset visualization</h1>
+    <div class="input-container" style="margin: 3.3rem;">
+      <span class="label">Enter year: </span>
+      <input
+        type="number"
+        value="2008"
+        id="selectedYear"
+        min="2008"
+        max="2019"
+        class="year-input"
+      />
+      <button id="year" class="year-input-button">Submit</button>
+      <!-- <span class="error invisible">Error: Enter year from 2008 to 2019</span> -->
+    </div>
+    <div
+      id="run-conceded-by-team-in-selectedYear"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+    <div
+      id="matches-played-per-year"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+    <div
+      id="match-won-by-team-over-all-year"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+    <div
+      id="run-conceded-by-team-in-2016"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+    <div
+      id="ten-best-ecnomic-bowler"
+      style="
+        min-width: 310px;
+        height: 400px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+    <div
+      id="match-won-by-each-team-per-venue"
+      style="
+        min-width: 310px;
+        height: 1000px;
+        margin: 2.9rem 2.6rem;
+        border: 1px dashed #34c6eb;
+        padding: 2rem;
+      "
+    ></div>
+
+    <script src="./app.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
     <script>
@@ -155,83 +233,5 @@
       //   xhttp.send();
       // }
     </script>
-  </head>
-  <body>
-    <h1>IPL Dataset visualization</h1>
-    <div class="input-container" style="margin: 3.3rem;">
-      <span class="label">Enter year: </span>
-      <input
-        type="number"
-        value="2008"
-        id="selectedYear"
-        min="2008"
-        max="2019"
-        class="year-input"
-      />
-      <button id="year" class="year-input-button">Submit</button>
-      <!-- <span class="error invisible">Error: Enter year from 2008 to 2019</span> -->
-    </div>
-    <div
-      id="run-conceded-by-team-in-selectedYear"
-      style="
-        min-width: 310px;
-        height: 400px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-    <div
-      id="matches-played-per-year"
-      style="
-        min-width: 310px;
-        height: 400px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-    <div
-      id="match-won-by-team-over-all-year"
-      style="
-        min-width: 310px;
-        height: 400px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-    <div
-      id="run-conceded-by-team-in-2016"
-      style="
-        min-width: 310px;
-        height: 400px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-    <div
-      id="ten-best-ecnomic-bowler"
-      style="
-        min-width: 310px;
-        height: 400px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-    <div
-      id="match-won-by-each-team-per-venue"
-      style="
-        min-width: 310px;
-        height: 1000px;
-        margin: 2.9rem 2.6rem;
-        border: 1px dashed #34c6eb;
-        padding: 2rem;
-      "
-    ></div>
-
-    <script src="./app.js"></script>
   </body>
 </html>
