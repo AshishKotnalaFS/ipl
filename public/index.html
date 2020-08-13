@@ -97,13 +97,12 @@
           id = "2008";
         }
         id = parseInt(id);
-        fetch(`/api/${id}`)
+        fetch(`api/${id}`)
           .then((res) => res.json())
           .then((data) => {
             let seriesData = [];
-            let data2 = data[0];
-            for (let team in data2) {
-              seriesData.push([team, +data2[team]]);
+            for (let team in data) {
+              seriesData.push([team, +data[team]]);
             }
             Highcharts.chart("run-conceded-by-team-in-selectedYear", {
               chart: {
