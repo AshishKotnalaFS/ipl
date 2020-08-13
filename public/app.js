@@ -326,7 +326,7 @@ yearButton.addEventListener("click", (e) => {
     id = "2008";
   }
   id = parseInt(id);
-  fetch(`http://localhost:5000/api/${id}`)
+  fetch(`/api/${id}`)
     .then((res) => res.json())
     .then((data) => {
       let seriesData = [];
