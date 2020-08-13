@@ -98,10 +98,10 @@
         }
         id = parseInt(id);
 
-        fetch(`http://localhost:5000/api/${id}`)
+        fetch(`/api/${id}`)
           .then((res) => {
             res.json();
-            console.log(res.json());
+            console.log(res.json, "DATADATDATDATDATD");
           })
           .then((data) => {
             let seriesData = [];
