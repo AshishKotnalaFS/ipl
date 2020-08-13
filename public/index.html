@@ -97,8 +97,12 @@
           id = "2008";
         }
         id = parseInt(id);
-        fetch(`/api/${id}`)
-          .then((res) => res.json())
+
+        fetch(`http://localhost:5000/api/${id}`)
+          .then((res) => {
+            res.json();
+            console.log(res.json());
+          })
           .then((data) => {
             let seriesData = [];
             for (let team in data) {
