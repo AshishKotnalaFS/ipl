@@ -27,6 +27,7 @@ app.get("/api/:id", (req, res) => {
     res.send(requireddata);
   });
 });
+
 app.listen(port, () => console.log(`listening on port ${port}...`));
 function main() {
   let result1;
