@@ -101,14 +101,9 @@
         }
         id = parseInt(id);
         fetch(`/api/${id}`)
-          .then(async (res) => {
-            if (res.ok) {
-              res = await res.json();
-            }
-          })
+          .then((res) => res.json())
           .then((data) => {
             let seriesData = [];
-
             for (let team in data) {
               seriesData.push([team, +data[team]]);
             }
