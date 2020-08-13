@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
 app.get("/api/:id", (req, res) => {
   let requireddata;
   let id = req.params.id;
-  console.log(id, "IDIDIDIDID");
   fs.readFile("./public/data2.json", (err, data) => {
     if (err) throw err;
     const users = JSON.parse(data);
