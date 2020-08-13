@@ -24,7 +24,7 @@ app.get("/api/:id", (req, res) => {
     if (err) throw err;
     const users = JSON.parse(data);
     requireddata = users.runConcededByTeamInSpecificYear[id];
-    res.send(requireddata);
+    res.json(requireddata);
   });
 });
 
