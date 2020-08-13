@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.get("/api/:id", (req, res) => {
+app.get("/api/id", (req, res) => {
   let requireddata;
   let id = req.params.id;
   fs.readFile("./public/data2.json", (err, data) => {
