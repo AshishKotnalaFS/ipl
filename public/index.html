@@ -93,6 +93,7 @@
     <script>
       const yearButton = document.getElementById("year");
       yearButton.addEventListener("click", (e) => {
+        e.preventDefault();
         let id = document.getElementById("selectedYear").value;
         if (!id) {
           id = "2008";
